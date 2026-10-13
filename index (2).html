@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Market Connect | One Platform. Four Markets.</title>
+
+<!-- Bootstrap 5 CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+<style>
+  :root {
+    --mc-navy: #2b3a1f;
+    --mc-blue: #4c7c3f;
+    --mc-blue-dark: #355c2b;
+    --mc-blue-light: #f2f5e9;
+    --mc-yellow: #e0a92e;
+    --mc-yellow-dark: #c48f1e;
+    --mc-brown: #6b4a2f;
+    --mc-brown-dark: #4a3220;
+    --mc-border: #ded3b8;
+    --mc-text-muted: #6b6250;
+  }
+
+  body {
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--mc-navy);
+    background-color: #fffdf7;
+  }
+
+  h1, h2, h3, h4, .navbar-brand {
+    font-weight: 700;
+  }
+
+  /* Navbar */
+  .navbar {
+    border-bottom: 1px solid var(--mc-border);
+  }
+
+  .navbar-brand {
+    color: var(--mc-navy) !important;
+    letter-spacing: 0.3px;
+  }
+
+  .nav-link {
+    color: var(--mc-navy) !important;
+    font-weight: 500;
+  }
+
+  .nav-link:hover {
+    color: var(--mc-blue) !important;
+  }
+
+  .btn-mc-primary {
+    background-color: var(--mc-blue);
+    border-color: var(--mc-blue);
+    color: #ffffff;
+    font-weight: 600;
+  }
+
+  .btn-mc-primary:hover {
+    background-color: var(--mc-blue-dark);
+    border-color: var(--mc-blue-dark);
+    color: #ffffff;
+  }
+
+  .btn-mc-outline {
+    border-color: var(--mc-brown);
+    color: var(--mc-brown);
+    font-weight: 600;
+  }
+
+  .btn-mc-outline:hover {
+    background-color: var(--mc-brown);
+    color: #ffffff;
+  }
+
+  .btn-mc-accent {
+    background-color: var(--mc-yellow);
+    border-color: var(--mc-yellow);
+    color: var(--mc-brown-dark);
+    font-weight: 600;
+  }
+
+  .btn-mc-accent:hover {
+    background-color: var(--mc-yellow-dark);
+    border-color: var(--mc-yellow-dark);
+    color: var(--mc-brown-dark);
+  }
+
+  /* Hero */
+  /* HERO SECTION - PRO VERSION */
+.hero {
+    overflow: hidden;
+    background-color: var(--mc-blue-light);
+    background-image:
+      radial-gradient(circle at 12% 18%, rgba(11, 218, 73, 0.28) 0%, rgba(224, 169, 46, 0) 42%),
+      radial-gradient(circle at 92% 85%, rgba(228, 116, 24, 0.22) 0%, rgba(38, 250, 9, 0) 45%),
+      linear-gradient(135deg, #eef3e0 0%, #f2f5e9 55%, #ece0c4 100%);
+  padding: 80px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.hero h1 {
+  font-size: 48px;
+  line-height: 1.1;
+  color: #1a2e1a;
+  font-weight: 800;
+}
+
+.hero p {
+  font-size: 16px;
+  color: #444;
+  margin-top: 16px;
+  line-height: 1.6;
+  max-width: 500px;
+}
+
+/* IMAGE FIX */
+.hero img {
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+  max-width: 520px;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* BUTTONS */
+.btn-primary {
+  background: #2e7d32;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: none;
+}
+.btn-secondary {
+  background: white;
+  color: #2e7d32;
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: 2px solid #2e7d32;
+}
+
+  /* Sections */
+  section {
+    padding: 4.5rem 0;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-subtitle {
+    color: var(--mc-text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* Market cards */
+  .market-card {
+    border: 1px solid var(--mc-border);
+    border-radius: 20px;
+    box-shadow: 0 2px 10px rgba(74, 50, 32, 0.08);
+    transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+    height: 100%;
+  }
+
+  .market-card:hover {
+    box-shadow: 0 8px 22px rgba(74, 50, 32, 0.16);
+    transform: translateY(-4px);
+    border-color: var(--mc-yellow);
+  }
+
+  .market-image-placeholder {
+    background-image: linear-gradient(135deg, rgba(76, 124, 63, 0.16) 0%, rgba(224, 169, 46, 0.18) 100%);
+    border-bottom: 1px solid var(--mc-border);
+    border-radius: 20px;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--mc-brown-dark);
+    font-weight: 500;
+    text-align: center;
+  }
+
+  .market-card .card-body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .market-card .card-body p {
+    color: var(--mc-text-muted);
+    flex-grow: 1;
+  }
+
+  /* How it works */
+  .how-step-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: #fcf1da;
+    border: 2px solid var(--mc-yellow);
+    color: var(--mc-yellow-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    margin: 0 auto 1rem auto;
+  }
+
+  /* Why section */
+  .why-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 0.5rem;
+    background-color: #efe2d2;
+    color: var(--mc-brown);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+  }
+
+  /* CTA */
+  .cta-section {
+    position: relative;
+    background-image:
+      radial-gradient(circle at 85% 20%, rgba(224, 169, 46, 0.25) 0%, rgba(224, 169, 46, 0) 50%),
+      linear-gradient(120deg, var(--mc-blue-dark) 0%, var(--mc-brown-dark) 100%);
+    color: #ffffff;
+  }
+
+  .cta-section p {
+    color: #e7dfca;
+  }
+
+  /* Footer */
+  footer {
+    background-color: var(--mc-brown-dark);
+    color: #d9cdb8;
+    padding-top: 3.5rem;
+  }
+
+  footer h5 {
+    color: var(--mc-yellow);
+    font-weight: 600;
+  }
+
+  footer a {
+    color: #d9cdb8;
+    text-decoration: none;
+  }
+
+  footer a:hover {
+    color: var(--mc-yellow);
+  }
+
+  .footer-bottom {
+    border-top: 1px solid #5c3f28;
+    margin-top: 2.5rem;
+    padding: 1.2rem 0;
+    font-size: 0.9rem;
+    color: #b6a890;
+  }
+</style>
+</head>
+<body>
+
+<!-- =========================
+     NAVIGATION BAR
+========================= -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top py-3">
+  <div class="container">
+    <a class="navbar-brand fs-4" href="index.html">MARKET CONNECT</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+            aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+        <li class="nav-item"><a class="nav-link px-3" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link px-3" href="#markets">Markets</a></li>
+        <li class="nav-item"><a class="nav-link px-3" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link px-3" href="#contact">Contact</a></li>
+        <input class="form-control rounded-pill bg-light border-0 px-4" 
+       list="marketOptions" 
+       placeholder="🔍 Search markets...">
+
+<datalist id="marketOptions">
+  <option value="Agriculture Market - Farm produce">
+  <option value="Electronics Market - Computers & TVs">
+  <option value="Car Market - Cars, SUVs, Pickups">
+  <option value="Phone Market - Smartphones & Tablets">
+</datalist>
+        <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+          <a href="#markets" class="btn btn-mc-primary px-4">Explore Markets</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- =========================
+     HERO SECTION
+========================= -->
+<header class="hero" id="home">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        <h1>One Platform. Four Markets. Endless Possibilities.</h1>
+        <p class="lead mt-3">
+          Market Connect brings agriculture, electronics, cars and phones together
+          in one convenient marketplace platform.
+        </p>
+        <div class="d-flex flex-wrap gap-3 mt-4">
+          <a href="#markets" class="btn btn-mc-primary btn-lg px-4">Explore Markets</a>
+          <a href="#about" class="btn btn-mc-outline btn-lg px-4">Learn More</a>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="hero-image-placeholder">
+          <img src="./images/Golden Horizon Marketplace (2).png" alt="" width="100%" height="400px">
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- =========================
+     MARKET CATEGORIES SECTION
+========================= -->
+<section id="markets">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="section-title">Explore Our Markets</h2>
+      <p class="section-subtitle mx-auto">
+        Choose from four specialized marketplaces, each built for a different need.
+      </p>
+    </div>
+
+    <div class="row g-4">
+
+      <!-- Agriculture Market -->
+      <div class="col-md-6 col-lg-3">
+        <div class="card market-card">
+          <div class="market-image-placeholder">
+            <img src="../agriculture/images/Charcoal (sack).jpg" alt="" width="100%" height="100%" style="border-radius: 20px;">
+          </div>
+          <div class="card-body p-4">
+            <h5 class="card-title">Agriculture Market</h5>
+            <p class="card-text">
+              Discover agricultural products, farm produce, livestock, seeds, farm inputs and more.
+            </p>
+            <a href="../agriculture/index (5).html" class="btn btn-mc-primary w-100">Visit Agriculture Market</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Electronics Market -->
+      <div class="col-md-6 col-lg-3">
+        <div class="card market-card">
+          <div class="market-image-placeholder">
+            <img src="./images/electro.webp" alt="" width="100%" height="100%" style="border-radius: 20px;"> 
+          </div>
+          <div class="card-body p-4">
+            <h5 class="card-title">Electronics Market</h5>
+            <p class="card-text">
+              Find electronics, computers, TVs, speakers, cameras, accessories and more.
+            </p>
+            <a href="../electronics/index.html" class="btn btn-mc-primary w-100">Visit Electronics Market</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Car Market -->
+      <div class="col-md-6 col-lg-3">
+        <div class="card market-card">
+          <div class="market-image-placeholder">
+            <img src="./images/cars.webp" alt="" width="100%" height="100%" style="border-radius: 20px;">
+          </div>
+          <div class="card-body p-4">
+            <h5 class="card-title">Car Market</h5>
+            <p class="card-text">
+              Explore cars, SUVs, pickups, vans, motorcycles and other vehicles.
+            </p>
+            <a href="../car shop/index (3).html" class="btn btn-mc-primary w-100">Visit Car Market</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phone Market -->
+      <div class="col-md-6 col-lg-3">
+        <div class="card market-card">
+          <div class="market-image-placeholder">
+            <img src="./images/electronics.webp" alt="" width="100%" height="100%" style="border-radius: 20px;">
+          </div>
+          <div class="card-body p-4">
+            <h5 class="card-title">Phone Market</h5>
+            <p class="card-text">
+              Shop smartphones, feature phones, tablets, accessories and related products.
+            </p>
+            <a href="phone-market.html" class="btn btn-mc-primary w-100">Visit Phone Market</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =========================
+     HOW MARKET CONNECT WORKS
+========================= -->
+<section style="background-color: #f6f0dd;" id="how-it-works">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="section-title">How Market Connect Works</h2>
+    </div>
+
+    <div class="row g-4 text-center">
+      <div class="col-md-4">
+        <div class="how-step-icon">
+          <i class="bi bi-grid-3x3-gap"></i>
+        </div>
+        <h5>1. Choose a Market</h5>
+        <p class="text-muted">Select Agriculture, Electronics, Cars or Phones.</p>
+      </div>
+      <div class="col-md-4">
+        <div class="how-step-icon">
+          <i class="bi bi-search"></i>
+        </div>
+        <h5>2. Explore Products</h5>
+        <p class="text-muted">Browse products available on the selected marketplace.</p>
+      </div>
+      <div class="col-md-4">
+        <div class="how-step-icon">
+          <i class="bi bi-arrow-right-circle"></i>
+        </div>
+        <h5>3. Connect &amp; Shop</h5>
+        <p class="text-muted">Visit the selected marketplace and interact with sellers and products.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================
+     WHY MARKET CONNECT
+========================= -->
+<section id="about">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="section-title">Why Market Connect</h2>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="d-flex gap-3">
+          <div class="why-icon"><i class="bi bi-shop"></i></div>
+          <div>
+            <h5>Multiple Markets</h5>
+            <p class="text-muted">Access four specialized marketplaces from one platform.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="d-flex gap-3">
+          <div class="why-icon"><i class="bi bi-compass"></i></div>
+          <div>
+            <h5>Easy Navigation</h5>
+            <p class="text-muted">Quickly find the market that matches what you need.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="d-flex gap-3">
+          <div class="why-icon"><i class="bi bi-phone"></i></div>
+          <div>
+            <h5>Responsive Design</h5>
+            <p class="text-muted">Access Market Connect from phones, tablets and computers.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="d-flex gap-3">
+          <div class="why-icon"><i class="bi bi-signpost-split"></i></div>
+          <div>
+            <h5>Convenient Marketplace Access</h5>
+            <p class="text-muted">Move between specialized marketplaces without confusion.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================
+     CALL TO ACTION SECTION
+========================= -->
+<section class="cta-section text-center">
+  <div class="container">
+    <h2 class="mb-3">Find What You're Looking For</h2>
+    <p class="mb-4">Explore our specialized marketplaces and discover products that match your needs.</p>
+    <a href="#markets" class="btn btn-mc-accent btn-lg px-5">Explore All Markets</a>
+  </div>
+</section>
+
+<!-- =========================
+     FOOTER
+========================= -->
+<footer id="contact">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-4">
+        <h5>MARKET CONNECT</h5>
+        <p class="mt-3">Connecting people to specialized marketplaces.</p>
+      </div>
+
+      <div class="col-6 col-lg-2">
+        <h5>Quick Links</h5>
+        <ul class="list-unstyled mt-3">
+          <li class="mb-2"><a href="#home">Home</a></li>
+          <li class="mb-2"><a href="#markets">Markets</a></li>
+          <li class="mb-2"><a href="#about">About</a></li>
+          <li class="mb-2"><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="col-6 col-lg-3">
+        <h5>Our Markets</h5>
+        <ul class="list-unstyled mt-3">
+          <li class="mb-2"><a href="agriculture-market.html">Agriculture Market</a></li>
+          <li class="mb-2"><a href="electronics-market.html">Electronics Market</a></li>
+          <li class="mb-2"><a href="car-market.html">Car Market</a></li>
+          <li class="mb-2"><a href="phone-market.html">Phone Market</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-3">
+        <h5>Contact</h5>
+        <ul class="list-unstyled mt-3">
+          <li class="mb-2">Email: info@marketconnect.com</li>
+          <li class="mb-2">Phone: +256 768 781773</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom text-center">
+      &copy; 2026 Market Connect. All Rights Reserved.
+    </div>
+  </div>
+</footer>
+
+<!-- Bootstrap 5 JS Bundle (needed for the navbar's mobile toggle) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
